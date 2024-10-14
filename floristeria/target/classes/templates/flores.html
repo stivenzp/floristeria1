@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Flores</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+</head>
+<body>
+<div class="container">
+    <h1>Gestión de Flores</h1>
+    <form th:action="@{/flores}" method="post">
+        <div class="form-group">
+            <label for="tipo">Tipo de Flor:</label>
+            <input type="text" id="tipo" name="tipo" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="variedad">Variedad:</label>
+            <input type="text" id="variedad" name="variedad" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad Disponible:</label>
+            <input type="number" id="cantidad" name="cantidadDisponible" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="precioCompra">Precio de Compra:</label>
+            <input type="number" id="precioCompra" name="precioCompra" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="precioVenta">Precio de Venta:</label>
+            <input type="number" id="precioVenta" name="precioVenta" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Flor</button>
+    </form>
+
+    <h2>Lista de Flores</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Color</th>
+            <th>Variedad</th>
+            <th>Cantidad Disponible</th>
+            <th>Precio Compra</th>
+            <th>Precio Venta</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flor : ${flores}">
+            <td th:text="${flor.id}"></td>
+            <td th:text="${flor.tipo}"></td>
+            <td th:text="${flor.color}"></td>
+            <td th:text="${flor.variedad}"></td>
+            <td th:text="${flor.cantidadDisponible}"></td>
+            <td th:text="${flor.precioCompra}"></td>
+            <td th:text="${flor.precioVenta}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
